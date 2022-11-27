@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve gnuproxy 
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/opt/gnuproxy
+Environment="PATH=/opt/gnuproxy/venv/bin"
+ExecStart=/opt/gnuproxy/venv/bin/gunicorn --workers 3 --bind unix:gnuproxy.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

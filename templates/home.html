@@ -1,0 +1,234 @@
+<!DOCTYPE html> {% extends 'layout.html' %} {%block title%}GnuProxy v1.0 - FREE{%endblock%} {% block content %} 
+
+<div class="col-sm-6">
+  <h4>
+     GnuProxy Dashboard
+     <a href="{{ url_for('home') }}">
+       <button type="button" class="btn  btn-light">
+       <i class="fa fa-retweet" aria-hidden="true"></i>
+       </button>
+       </a>
+  </h4>
+</div>
+<!-- Default box -->
+<div class="card card-solid">
+  <div class="card-body pb-0">
+    <div class="row">
+      <div class="col-12 d-flex align-items-stretch flex-column">
+        <!-- Small boxes (Stat box) -->
+        <div class="row" id="Ok">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{data['hostname']}}</h3>
+                <p>Hostname</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{(data['uptime'] / 3600)|round(3)}}</h3>
+                <p>Uptime</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-clock"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{data['os'][0:5]}}</h3>
+                <p>Operating System</p>
+              </div>
+              <div class="icon">
+                <i class="fab fa-ubuntu"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{data['num_cpus']}}</h3>
+                <p>Processors</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-microchip"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ram['total']}}</h3>
+                <p>Total RAM</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ram['available']}}</h3>
+                <p>Available RAM</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-microchip"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ram['used']}}</h3>
+                <p>Used RAM</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-microchip"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ram['free']}}</h3>
+                <p>Free RAM</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-microchip"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                <i class="fab fa-ubuntu"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Sent & Received Emails</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/cgi-bin/mailgraph.cgi?0-n" alt="In - Out" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Postfix </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Bounced - Viruses - Spam - Rejected</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/cgi-bin/mailgraph.cgi?0-e" alt="Summury" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Postfix - Amavis - Clamav </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Greylisted - Delayed Emails</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/cgi-bin/mailgraph.cgi?0-g" alt="In - Out" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Postgrey </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <!---->
+        <p align="right">
+          <a href="{{ url_for('home') }}">
+            <button type="button" class="btn  btn-dark btn-lg">
+              <i class="fa fa-retweet" aria-hidden="true"></i>
+            </button>
+          </a>
+        </p>
+        <!---->
+      </div>
+    </div>
+  </div>
+</div> {% endblock %} {%block javascript%} <script src="/static/js/adminlte.min.js"></script> {%endblock%}

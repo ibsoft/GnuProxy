@@ -1,0 +1,255 @@
+<!DOCTYPE html> {% extends 'layout-cmd.html' %} {%block title%}GnuProxy v1.0 - FREE{%endblock%} {% block content %}
+
+<div class="col-sm-6">
+  <h4>
+     Control Panel
+     <a href="{{ url_for('shellcmd') }}">
+       <button type="button" class="btn  btn-light">
+       <i class="fa fa-retweet" aria-hidden="true"></i>
+       </button>
+       </a>
+  </h4>
+</div>
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-cog"></i> Services
+            </h3>
+          </div>
+          <div class="card-body pad table-responsive">
+            <p>Start / Stop System Services</p>
+            <table class="table table-bordered text-center">
+              <tr>
+                <th>Postfix</th>
+                <th>Postgrey</th>
+                <th>Amavis</th>
+                <th>Clamav</th>
+                <th>freshclam</th>
+                <th>Bind9</th>
+                <th>Spamassassin</th>
+              </tr>
+              <tr>
+                <td>
+                  <a href='{{url_for("action",cmd="0",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="1",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="2",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="3",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="4",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="5",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="6",action="str")}}'>
+                    <button type="button" class="btn btn-block btn-success btn-lg">Start</button>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href='{{url_for("action",cmd="0",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="1",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="2",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="3",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="4",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="5",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="6",action="stp")}}'>
+                    <button type="button" class="btn btn-block btn-danger btn-lg">Stop</button>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href='{{url_for("action",cmd="0",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="1",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="2",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="3",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="4",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="5",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("action",cmd="6",action="res")}}'>
+                    <button type="button" class="btn btn-block btn-primary btn-lg">Restart</button>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+              <tr>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+                <td>
+                  <a href='{{url_for("shellcmd")}}'>
+                    <button type="button" class="btn btn-block btn-info btn-lg">Status</button>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td> {%if statuses['postfix'] == "active"%} <h5 style="color:green;">{{statuses['postfix']}}</h5> {%elif statuses['postfix'] == "inactive"%} <h5 style="color:red;">{{statuses['postfix']}}</h5> {%elif statuses['postfix'] not in "active" and statuses['postfix'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['postgrey'] == "active"%} <h5 style="color:green;">{{statuses['postgrey']}}</h5> {%elif statuses['postgrey'] == "inactive"%} <h5 style="color:red;">{{statuses['postgrey']}}</h5> {%elif statuses['postgrey'] not in "active" and statuses['postgrey'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['amavis'] == "active"%} <h5 style="color:green;">{{statuses['amavis']}}</h5> {%elif statuses['amavis'] == "inactive"%} <h5 style="color:red;">{{statuses['amavis']}}</h5> {%elif statuses['amavis'] not in "active" and statuses['amavis'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['clamav-daemon'] == "active"%} <h5 style="color:green;">{{statuses['clamav-daemon']}}</h5> {%elif statuses['clamav-daemon'] == "inactive"%} <h5 style="color:red;">{{statuses['clamav-daemon']}}</h5> {%elif statuses['clamav-daemon'] not in "active" and statuses['clamav-daemon'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['clamav-freshclam'] == "active"%} <h5 style="color:green;">{{statuses['clamav-freshclam']}}</h5> {%elif statuses['clamav-freshclam'] == "inactive"%} <h5 style="color:red;">{{statuses['clamav-freshclam']}}</h5> {%elif statuses['clamav-freshclam'] not in "active" and statuses['clamav-freshclam'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['bind9'] == "active"%} <h5 style="color:green;">{{statuses['bind9']}}</h5> {%elif statuses['bind9'] == "inactive"%} <h5 style="color:red;">{{statuses['bind9']}}</h5> {%elif statuses['bind9'] not in "active" and statuses['bind9'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+                <td> {%if statuses['spamassassin'] == "active"%} <h5 style="color:green;">{{statuses['spamassassin']}}</h5> {%elif statuses['spamassassin'] == "inactive"%} <h5 style="color:red;">{{statuses['spamassassin']}}</h5> {%elif statuses['spamassassin'] not in "active" and statuses['spamassassin'] not in "inactive" %} <h5 style="color:error;">Error</h5> {% endif %} </td>
+              </tr>
+              <tr></tr>
+            </table>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.col -->
+   
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-cog"></i> Postfix Mail Queue
+            </h3>
+          </div>
+          <div class="card-body pad ">
+
+
+
+            <div class="d-flex justify-content-between">
+              <a href='{{url_for("pause")}}'>
+              <button class="btn btn-warning btn-lg">
+                 <i class="fas fa-circle" aria-hidden="true"> Hold all deffered messages</i>
+              </button>
+            </a>
+            <a href='{{url_for("release")}}'>
+              <button class="btn btn-danger btn-lg">
+                 <i class="fas fa-circle" aria-hidden="true"> Delete all deffered messages</i>
+               </button>
+              </a>
+              <a href='{{url_for("reload")}}'>
+                <button class="btn btn-info btn-lg">
+                   <i class="fas fa-circle" aria-hidden="true"> Flash messages queue</i>
+                 </button>
+                </a>
+             </div>
+             
+
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- ./row -->
+    </div>
+    </div>
+    <!-- /.card-body -->
+    </div>
+  
+
+
+
+
+</section> 
+
+{% endblock %} {%block javascript%} 
+
+
+
+<script src="/static/js/adminlte.min.js"></script> {%endblock%}

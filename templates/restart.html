@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Login</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="{{ url_for('static', filename='script.js') }}"></script>
+	</head>
+	<body>
+
+<b>GnuProxy is restarting.</b> <span id="dots"></span>
+
+  <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    
+    
+   
+
+    <p style="text-align:center;"><img src="static/images/gnuproxy-restarting.png" alt="Logo"></p>
+  
+  </div>
+
+
+
+<script>
+
+    toastr["warning"]("Rebooting system.")
+ 
+    toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+ }
+
+</script>
+
+
+<script>
+    function addDot() {
+      let dots = document.getElementById("dots");
+      dots.innerText = dots.innerText + ".";
+    }
+  
+    function redirect() {
+      window.location = "/logout";
+    }
+    window.onload = function() {
+      window.setInterval(addDot, 500);
+      window.setInterval(redirect, 7000);
+    };
+  </script>
+
+</body>
+
+</html>

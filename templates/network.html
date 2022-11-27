@@ -1,0 +1,123 @@
+<!DOCTYPE html> 
+
+{% extends 'layout.html' %} 
+
+{%block title%}GnuProxy v1.0 - FREE{%endblock%} 
+
+{% block content %} 
+
+
+<div class="col-sm-6">
+  <h4>
+     Network Traffic
+     <a href="{{ url_for('network') }}">
+       <button type="button" class="btn  btn-light">
+       <i class="fa fa-retweet" aria-hidden="true"></i>
+       </button>
+       </a>
+  </h4>
+</div>
+
+        <!-- Main row -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Daily traffic</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/netstats/enp0s3-day.png" alt="Daily" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Gnuproxy </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Weekly traffic</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/netstats/enp0s3-week.png" alt="Weekly" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Gnuproxy </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Monthly traffic</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/netstats/enp0s3-month.png" alt="monthly" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Gnuproxy </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Yearly traffic</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="column">
+              <img src="https://{{ request.environ['SERVER_NAME'] }}/netstats/enp0s3-year.png" alt="yearly" style="display: block; margin-left: auto;margin-right: auto;  width: 90%;">
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer"> Gnuproxy </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+        <!---->
+        <p align="right">
+          <a href="{{ url_for('home') }}">
+            <button type="button" class="btn  btn-dark btn-lg">
+              <i class="fa fa-retweet" aria-hidden="true"></i>
+            </button>
+          </a>
+        </p>
+        <!---->
+      </div>
+    </div>
+  </div>
+</div> {% endblock %} {%block javascript%} <script src="/static/js/adminlte.min.js"></script> {%endblock%}

@@ -1,0 +1,41 @@
+{% extends "layout-editor.html" %}
+
+
+
+{% block title %}: {{ path }}{% endblock %}
+
+{% block javascript %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ext-modelist.js"></script>
+
+<link rel="stylesheet" href="/static/css/style-editor.css">
+
+<script src="/static/scripts/files.js" charset="utf-8"></script>
+<script src="/static/scripts/edit.js" charset="utf-8"></script>
+
+
+
+{% endblock %}
+
+{% block menu %}
+<div class="p-4 pt-5" id="menu">
+  
+  
+  <a href="/gnueditor/{{ path }}">view</a> | 
+  <a href="#" onclick="save(); return false;">save</a> |
+  <a href="#" onclick="rename(); return false;">rename</a> |
+  <a href="#" onclick="del('file'); return false;">delete</a>
+  <hr>
+
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<h3 id="file_header">{{ path }} <span id="save_message"></span></h3>
+
+  <div class="p-4 pt-5" id="editor">{{ content }}</div>
+
+{% endblock %}

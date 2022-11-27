@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/cssdb/adminlte.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+   
+    
+
+  </head>
+  <body class="loggedin">
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(static/images/logo.jpg);"></a>
+	        <ul class="list-unstyled components mb-5">
+            <li class="active">
+            
+              <a href="{{ url_for('home') }}">Home</a>
+            </li>
+	        
+				      <li>
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">System</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+			
+                <li>
+                  <a href="{{ url_for('shellcmd') }}">Control panel</a>
+              </li>
+              {% if role == 'Admin' %}
+				         <li>
+                    <a href="{{ url_for('gnueditor') }}">Root file editor</a>
+                </li>
+                {%endif%}
+				
+	            </ul>
+	          </li>
+	          {% if role == 'Admin' %}
+	          <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Postfix</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/main.cf?edit">Edit main.cf</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/master.cf?edit">Edit master.cf</a>
+                </li>
+                <li>
+                  <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/transport?edit">Edit transport</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('gnueditor')}}etc/postfix/virtual?edit">Edit virtual</a>
+              </li>
+              </ul>
+	          </li>
+
+            <li>
+              <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Postgrey</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/greylist_sender_exceptions?edit">Edit sender_exceptions</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/cidr_greylist_network_exceptions?edit">Edit network_exceptions</a>
+                </li>
+                <li>
+                  <li>
+                    <a href="{{ url_for('gnueditor')}}etc/postfix/check_client_fqdn?edit">Edit check_client_fqdn</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('gnueditor')}}etc/postgrey/whitelist_clients?edit">Edit whitelist_clients</a>
+              </li>
+              <li>
+                <a href="{{ url_for('gnueditor')}}etc/postgrey/whitelist_recipients?edit">Edit whitelist_recipients</a>
+            </li>
+              </ul>
+	          </li>
+
+            
+
+            <li>
+            <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Amavis</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu3">
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/amavis/conf.d/50-user?edit">Edit 50-user</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('gnueditor')}}etc/default/amavisd-snmp-subagent?edit">Edit amavisd-snmp-subagent</a>
+                </li>
+              </ul>
+	          </li>
+
+            <li>
+              <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clamav</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu4">
+                  <li>
+                      <a href="{{ url_for('gnueditor')}}etc/clamav/clamd.conf?edit">Edit clamd.conf</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('gnueditor')}}etc/clamav/freshclam.conf?edit">Edit freshclam.conf</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bind9</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu6">
+                    <li>
+                        <a href="{{ url_for('gnueditor')}}etc/bind/bind.keys?edit">Edit bind.keys</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('gnueditor')}}etc/bind/db.0?edit">Edit db.0</a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('gnueditor')}}etc/bind/db.127?edit">Edit db.127</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('gnueditor')}}etc/bind/db.255?edit">Edit db.255</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('gnueditor')}}etc/bind/db.local?edit">Edit db.local</a>
+                </li>
+                <li>
+                <a href="{{ url_for('gnueditor')}}etc/bind/named.conf?edit">Edit named.conf</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('gnueditor')}}etc/bind/named.conf.default-zones?edit">Edit named.conf.default-zones</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('gnueditor')}}etc/bind/named.conf.local?edit">Edit named.conf.local</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('gnueditor')}}etc/bind/named.conf.options?edit">Edit named.conf.options</a>
+              </li>
+              <li>
+                <a href="{{ url_for('gnueditor')}}etc/bind/rndc.key?edit">Edit rndc.key</a>
+            </li>
+                  </ul>
+                </li>
+
+
+                <li>
+                  <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Spamassassin</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                        <a href="{{ url_for('gnueditor')}}etc/spamassassin/local.cf?edit">Edit local.cf</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('gnueditor')}}etc/default/spamassassin?edit">Edit defaults</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#pageSubmenu9" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Logs</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu9">
+                    <li>
+                        <a href="{{ url_for('maillog')}}">mail.log</a>
+                    </li>
+                  </ul>
+                </li>
+                
+              {%endif%}
+			  
+	        </ul>
+
+
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+				</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('home')}}">Home</a>
+                </li>
+				{% if role == 'Admin' %}
+				<a class="nav-link" href="{{url_for('admin')}}">Admin</a>
+				{% endif %}
+                 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('profile')}}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('about')}}">About</a>
+                </li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+  <!-- Default box -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Postfix Mail Log</h3>
+
+      
+    </div>
+    <div class="card-body">
+		{% block content %}{% endblock %}
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    GnuProxy
+  </div>
+  <!-- /.card-footer-->
+</div>
+<!-- /.card -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+        
+      </div>
+		</div>
+   
+   
+    <script src="static/js/popper.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+
+
+
+    {% block javascript %}{% endblock %}
+  </body>
+
+
+   <!-- Footer -->
+   <footer class="page-footer font-small blue">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2022 CopyLeft:
+       <a href="https://www.gnuproxy.org"> Gnuproxy</a>
+    </div>
+    <!-- Copyright -->
+ </footer>
+ <!-- Footer -->
+
+</html>

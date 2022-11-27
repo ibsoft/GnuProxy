@@ -1,0 +1,318 @@
+{% extends 'layout-firewall.html' %}
+{%block title%}GnuProxy v1.0 - FREE{%endblock%}
+{% block content %}
+
+<style>
+   .modal {
+      text-align: center;
+      padding: 0!important;
+    }
+    
+    .modal:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -4px; /* Adjusts for spacing */
+    }
+    
+    .modal-dialog {
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+    }
+</style>
+
+<div class="col-sm-6">
+   <h4>
+      System Firewall Rules
+      <a href="{{ url_for('firewall') }}">
+        <button type="button" class="btn  btn-light">
+        <i class="fa fa-retweet" aria-hidden="true"></i>
+        </button>
+        </a>
+        <br>
+        <a href="#">
+         <button type="button" class="btn  btn-light"  data-toggle="modal" data-target="#modal-allow-host-net" title="Allow from host or net">
+         <i class="fa fa-desktop" ></i>
+         </button>
+         </a>
+         <a href="#">
+            <button type="button" class="btn  btn-light"  data-toggle="modal" data-target="#modal-deny-host-net" title="Deny from net or host">
+            <i class="fa fa-network-wired" ></i>
+            </button>
+            </a>
+         <a href="#">
+            <button type="button" class="btn  btn-light"  data-toggle="modal" data-target="#modal-add-port" title="Allow to port from any">
+               <i class="fa fa-plus" ></i>
+               </button>
+            </a>
+            <a href="#">
+               <button  type="button" class="btn  btn-light"  data-toggle="modal" data-target="#modal-del" title="Delete rule">
+                  <i class="fa fa-minus" ></i>
+                  </button>
+               </a>
+   </h4>
+</div>
+<div class="row">
+<div class="col-12">
+<div class="card card-primary card-outline card-tabs">
+<div class="card-header p-0 pt-1 border-bottom-0">
+   <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+      <li class="nav-item">
+         <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Firewall Rules</a>
+      </li>
+   </ul>
+ 
+</div>
+<div class="card-body">
+   <div class="tab-content" id="custom-tabs-three-tabContent">
+      
+      <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ fwcontent1 }}
+         </textarea>
+      </div>
+      
+        </textarea>
+     </div>
+
+</div>
+<!-- /.card -->
+
+<!--Allow to port from any-->
+<div class="modal fade" id="modal-add-port">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">GnuProxy - Allow Access to Port from Any</h4>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form id="form-add-port"action="{{ url_for('fwallowport') }}" method="post">
+            <label for="port">Allow Port</label>
+            <div class='form-group'>
+            <input type='number' name='port' id="port" value="" minlength="1" maxlength="5" size="10"  required class='form-control' title="Enter port number">
+            </div>
+            <label for="comment">Comment</label>
+            <div class='form-group'>
+              <input type='text' name='comment' id="comment" value="" minlength="2" maxlength="30" size="10"  required class='form-control' title="Enter comment">
+            </div>
+        </form>
+       </div>
+       <div class="modal-footer justify-content-between">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <button type="button" id="btnAddport" class="btn btn-primary">Allow Port</button>
+       </div>
+     </div>
+     <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
+ </div>
+ <!-- /.modal -->
+
+
+ <!--Delete Rule-->
+
+ <div class="modal fade" id="modal-del">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">GnuProxy - Delete Rule Number</h4>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form id="form-del" action="{{ url_for('fwdelrule') }}" method="post">
+            <label for="rulenumber">Rule Number</label>
+            <div class='form-group'>
+              <input type='number' name='rulenumber' id="rulenumber" value="" minlength="1" maxlength="5" size="10"  required class='form-control' title="Enter rule number">
+            </div>
+        </form>
+       </div>
+       <div class="modal-footer justify-content-between">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <button id="btnDelrule" type="button" class="btn btn-primary">Delete Rule</button>
+       </div>
+     </div>
+     <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
+ </div>
+ <!-- /.modal -->
+
+
+ <!--Add allow from host or net -->
+
+ <div class="modal fade" id="modal-allow-host-net">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">GnuProxy - Allow Host or Net to Port</h4>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form id="form-allow-host-net" action="{{ url_for('fwallowhostnet') }}" method="post">
+          <label for="linenumber">Add rule to line</label>
+          <div class='form-group'>
+            <input type='number' name='linenumber' id="linenumber" value="" minlength="1" maxlength="5" size="10"  required class='form-control' title="Enter line number">
+          </div>
+            
+              <label for="ipaddress">IP Address or Network</label>
+              <div class='form-group'>
+                <input type='text' name='ipaddress' id="ipaddress" value="" minlength="15" maxlength="15" size="10"  required class='form-control' title="Enter IP Address">
+              </div>
+           
+            <label for="port">Allow Port</label>
+            <div class='form-group'>
+            <input type='number' name='port' id="port" value="" minlength="1" maxlength="5" size="10"  required class='form-control' title="Enter port number">
+            </div>
+            <label for="comment">Comment</label>
+            <div class='form-group'>
+              <input type='text' name='comment' id="comment" value="" minlength="15" maxlength="15" size="10"  required class='form-control' title="Enter comment">
+            </div>
+
+        </form>
+       </div>
+       <div class="modal-footer justify-content-between">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <button type="button" id="btnAllowHostNet" class="btn btn-primary">Add Rule</button>
+       </div>
+     </div>
+     <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
+ </div>
+ <!-- /.modal -->
+
+
+
+ <!--Deny from host or net -->
+ <div class="modal fade" id="modal-deny-host-net">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">GnuProxy - Deny IP Address or Network Rule to Any</h4>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form id="form-deny-host-net" action="{{ url_for('fwdenyhostnet') }}" method="post">
+          <label for="ipaddrnet">Add rule to line</label>
+          <div class='form-group'>
+            <input type='number' name='linenumber' id="linenumber" value="" minlength="1" maxlength="5" size="10"  required class='form-control' title="Enter line number">
+          </div>
+            <label for="ipaddrnet">IP Address or Network</label>
+            <div class='form-group'>
+              <input type='text' name='ipaddress' id="ipaddress" value="" minlength="15" maxlength="15" size="10"  required class='form-control' title="Enter IP Address">
+            </div>
+               <label for="comment">Comment</label>
+            <div class='form-group'>
+              <input type='text' name='comment' id="comment" value="" minlength="15" maxlength="15" size="10"  required class='form-control' title="Enter comment">
+            </div>
+
+        </form>
+       </div>
+       <div class="modal-footer justify-content-between">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <button type="button" id="btnDenyHostNet" class="btn btn-primary">Add Rule</button>
+       </div>
+     </div>
+     <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
+ </div>
+ <!-- /.modal -->
+
+{%endblock%}   
+{% block javascript %}
+
+<!--Delete Firewall Rule-->
+<script>
+  $('#btnDelrule').click(function(event) {
+    event.preventDefault();
+    var url = "{{ url_for('fwdelrule') }}";
+    $.post(url, data=$('#form-del').serialize(), function(data) {
+      if (data.status == 'ok') {
+        $('#modal-del').modal('hide');
+        location.reload();
+      }
+      else {
+        $('#modal-del').modal('hide');
+        location.reload();
+      }
+  })
+  });
+</script>
+
+<!--Add firewall Rule-->
+
+<script>
+
+  
+  $('#btnAddport').click(function(event) {
+    event.preventDefault();
+    var url = "{{ url_for('fwallowport') }}";
+    $.post(url, data=$('#form-add-port').serialize(), function(data) {
+      if (data.status == 'ok') {
+        $('#modal-add-port').modal('hide');
+        location.reload();
+      }
+      else {
+        $('#modal-add-port').modal('hide');
+        location.reload();
+      }
+  })
+  });
+</script>
+
+<!--Deny firewall Rule from net or host-->
+
+<script>
+
+  
+  $('#btnDenyHostNet').click(function(event) {
+    event.preventDefault();
+    var url = "{{ url_for('fwdenyhostnet') }}";
+    $.post(url, data=$('#form-deny-host-net').serialize(), function(data) {
+      if (data.status == 'ok') {
+        $('#modal-deny-host-net').modal('hide');
+        location.reload();
+      }
+      else {
+        $('#modal-deny-host-net').modal('hide');
+        location.reload();
+      }
+  })
+  });
+</script>
+
+
+<!--Allow firewall Rule from net or host-->
+<script>
+
+  
+  $('#btnAllowHostNet').click(function(event) {
+    event.preventDefault();
+    var url = "{{ url_for('fwallowhostnet') }}";
+    $.post(url, data=$('#form-allow-host-net').serialize(), function(data) {
+      if (data.status == 'ok') {
+        $('#modal-allow-host-net').modal('hide');
+        location.reload();
+      }
+      else {
+        $('#modal-allow-host-net').modal('hide');
+        location.reload();
+      }
+  })
+  });
+</script>
+
+<script src="/static/js/adminlte.min.js"></script>
+{%endblock%}

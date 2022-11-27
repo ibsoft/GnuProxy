@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<p>Welcome back, {{ username }}!</p>
+{% endblock %}
+
+{% block contentDG %}
+
+{% block app_content %}
+
+{{ grid.display()|safe }}
+
+{% endblock app_content %}
+
+{% block scripts %}{% endblock %}
+
+
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends 'layout-logs.html' %}
+{%block title%}GnuProxy v1.0 - FREE{%endblock%}
+{% block content %}
+<div class="col-sm-6">
+   <h4>
+      System LOGS
+      <a href="{{ url_for('logs') }}">
+        <button type="button" class="btn  btn-light">
+        <i class="fa fa-retweet" aria-hidden="true"></i>
+        </button>
+        </a>
+   </h4>
+</div>
+<div class="row">
+<div class="col-12">
+<div class="card card-primary card-outline card-tabs">
+<div class="card-header p-0 pt-1 border-bottom-0">
+   <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+      <li class="nav-item">
+         <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Postfix Logs</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" id="custom-tabs-three-mail-tab" data-toggle="pill" href="#custom-tabs-three-mail" role="tab" aria-controls="custom-tabs-three-mail" aria-selected="false">Mail Report</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Gnuproxy Logs</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">System Logs</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" id="custom-tabs-three-nginx-tab" data-toggle="pill" href="#custom-tabs-three-nginx" role="tab" aria-controls="custom-tabs-three-nginx" aria-selected="false">Nginx Logs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-three-auth-tab" data-toggle="pill" href="#custom-tabs-three-auth" role="tab" aria-controls="custom-tabs-three-auth" aria-selected="false">System audit</a>
+     </li>
+   </ul>
+ 
+</div>
+<div class="card-body">
+   <div class="tab-content" id="custom-tabs-three-tabContent">
+      <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ content1 }}
+         </textarea>
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-three-mail" role="tabpanel" aria-labelledby="custom-tabs-three-mail-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ mailreport }}
+         </textarea>
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ content2 }}
+         </textarea>
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ content3 }}
+         </textarea>
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-three-nginx" role="tabpanel" aria-labelledby="custom-tabs-three-nginx-tab">
+         <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+         {{ content4 }}
+         </textarea>
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-three-auth" role="tabpanel" aria-labelledby="custom-tabs-three-auth-tab">
+        <textarea readonly class="form-control col-xs-12 read-only" rows="31" cols="50" style="font-size: 14px; background-color:black; color:#fff;">  
+        {{ content5 }}
+        </textarea>
+     </div>
+
+   </div>
+</div>
+<!-- /.card -->
+{%endblock%}   
+{% block javascript %}
+<script src="/static/js/adminlte.min.js"></script>
+{%endblock%}
