@@ -22,5 +22,5 @@ Password: GnuP@ssw0rd
 Web Interface
 
 Username: admin
-P@ssw0rd: GnuP@ssw0rd
+Password: GnuP@ssw0rd
 
