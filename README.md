@@ -10,3 +10,15 @@ GnuProxy is build on Ubuntu Server 22.0.4 LTS
 
 Download Torrent (Virtual Box .ova) - https://tracker.ibsoft.com.gr/torrents/gnuproxy_v1.0.7z.torrent
 
+GnuProxy - v1.0 - Ioannis A. Bouhras - <ioannis.bouhras@gmail.com> <mycyberdevops@gmail.com>
+
+GitHub Repo: https://github.com/ibsoft/GnuProxy
+
+VM Data
+Username: gnuproxy
+Password: GnuP@ssw0rd
+
+Web Interface
+Username: admin
+P@ssw0rd: GnuP@ssw0rd
+
