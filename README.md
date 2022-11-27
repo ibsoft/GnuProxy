@@ -17,10 +17,12 @@ GitHub Repo: https://github.com/ibsoft/GnuProxy
 VM Data
 
 Username: gnuproxy
+
 Password: GnuP@ssw0rd
 
 Web Interface
 
 Username: admin
+
 Password: GnuP@ssw0rd
 
