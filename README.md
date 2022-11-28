@@ -6,10 +6,11 @@ Gnu Proxy is a web frontend for the famous Postfix Mail Delivery System, written
 
 The Postfix SMTP server receives mail from the network and is exposed to the big bad world of junk email and viruses. In a distant past, the Internet was a friendly environment. Mail servers happily forwarded mail on behalf of anyone towards any destination. On today’s Internet, spammers abuse servers that forward mail from arbitrary systems, and abused systems end up on anti-spammer denylists. GnuProxy is here to solve all this problems!
 
-GnuProxy is build on Ubuntu Server 22.0.4 LTS
+GnuProxy is build on Ubuntu Server 22.0.4 LTS - Download here the fully functional vmOS (.ova)
 
+Download Torrent: https://tracker.ibsoft.com.gr/torrents/gnuproxy_v1.0.7z.torrent
 
-Direct Download https://drive.google.com/file/d/1J7tOafRPNZlXIE1EW-UZYp57yqiE9JBq/view?usp=sharing
+Direct Download:  https://drive.google.com/file/d/1J7tOafRPNZlXIE1EW-UZYp57yqiE9JBq/view?usp=sharing
 
 GnuProxy - v1.0 - Ioannis A. Bouhras - <ioannis.bouhras@gmail.com> <mycyberdevops@gmail.com>
 
